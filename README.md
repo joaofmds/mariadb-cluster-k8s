@@ -149,7 +149,7 @@ spec:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/mariadb-galera-cluster-k8s.git
+    git clone https://github.com/joaofmds/mariadb-cluster-k8s.git
     cd mariadb-galera-cluster-k8s
     ```
 
