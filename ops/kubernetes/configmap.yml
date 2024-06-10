@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb-config
+data:
+  my.cnf: |
+    [mysqld]
+    query_cache_size=0
+    binlog_format=ROW
+    default_storage_engine=InnoDB
+    innodb_autoinc_lock_mode=2
+    bind-address=0.0.0.0
+    [galera]
+    wsrep_on=ON
+    wsrep_provider=/usr/lib/galera/libgalera_smm.so
+    wsrep_cluster_address=gcomm://mariadb-0.mariadb,mariadb-1.mariadb,mariadb-2.mariadb
+    wsrep_cluster_name="mariadb_cluster"
+    wsrep_node_address=$(POD_IP)
+    wsrep_node_name=$(HOSTNAME)
+    wsrep_sst_method=rsync
